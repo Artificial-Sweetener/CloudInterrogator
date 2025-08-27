@@ -1,8 +1,10 @@
-# ☁️ Cloud Interrogator
+<p align="center"><img width="895" height="1024" alt="image" src="https://github.com/user-attachments/assets/dc7c59f4-8d1b-432b-8a01-4aa14b84b53d" /></p>
+
+# <img src="icon.png" alt="Cloud Interrogator Logo" width="32"> Cloud Interrogator
 
 Hiii!~ I made Cloud Interrogator because I wanted a cozy, beautiful little spot on my desktop to interact with machine vision models. It's a native app built with PySide6 that feels right at home on your computer.
 
-Best of all, it's designed to feel like it was never closed. The app saves its entire state when you exit—your prompts, the image you were working with, your model settings, and even the window position—so you can always pick up exactly where you left off!
+Best of all, it's designed to feel like it was never closed. The app saves its entire state when you exit - your prompts, the image you were working with, your model settings, and even the window position—so you can always pick up exactly where you left off!
 
 ## Features
 
