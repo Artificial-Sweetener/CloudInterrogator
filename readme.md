@@ -15,9 +15,21 @@ Best of all, it's designed to feel like it was never closed. The app saves its e
 - **Total Prompt Control**: Load local images, switch between separate System and User prompts, and even save/load your favorite image-and-prompt pairs to a file.
 - **Fine-Tuning Knobs**: All the controls you need to get the perfect response: max tokens, temperature, top-p, and a seed for reproducible results.
 
-## Getting Started
+## How to Use
 
-### Dependencies
+1.  **Set Up Your Endpoint**: The first time you run the app, click **Manage Endpoints** to add your API details (give it a name, add the URL, your key, and a list of models).
+2.  **Pick Your Model**: Choose your endpoint from the main dropdown menu.
+3.  **Load an Image**: Click **Load Image** to pick a file.
+4.  **Write Your Prompts**: Fill in the User and System prompt boxes.
+5.  **Run!**: Adjust your settings and click **Run** to start the magic!
+
+## Installation
+
+### Portable Windows Binary
+
+If messing around with Python isn't your jam, I've got you covered. You can grab the latest build directly from the [**Releases page**](https://github.com/Artificial-Sweetener/CloudInterrogator/releases)!
+
+### With Python
 
 Getting set up is super easy! Just install the packages from `requirements.txt`.
 
@@ -31,21 +43,11 @@ If you want the app to match your system's accent color on Windows, you'll need 
 pip install winaccent
 ```
 
-### Running the Application
-
 Once that's done, you can start the app with:
 
 ```bash
 python main.py
 ```
-
-## How to Use
-
-1.  **Set Up Your Endpoint**: The first time you run the app, click **Manage Endpoints** to add your API details (give it a name, add the URL, your key, and a list of models).
-2.  **Pick Your Model**: Choose your endpoint from the main dropdown menu.
-3.  **Load an Image**: Click **Load Image** to pick a file.
-4.  **Write Your Prompts**: Fill in the User and System prompt boxes.
-5.  **Run!**: Adjust your settings and click **Run** to start the magic!
 
 ## Building from Source
 
