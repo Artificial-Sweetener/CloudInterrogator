@@ -66,9 +66,13 @@ from qframelesswindow.titlebar import TitleBar
 
 APP_ORG = "CloudInterrogator"
 APP_NAME = "CloudInterrogator"
-ENDPOINTS_FILE = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "endpoints.json"
-)
+if getattr(sys, 'frozen', False):
+    # Running as a compiled executable
+    app_dir = os.path.dirname(sys.executable)
+else:
+    # Running as a normal script
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+ENDPOINTS_FILE = os.path.join(app_dir, "endpoints.json")
 UI_GAP = 12  # single knob for section spacing
 
 
