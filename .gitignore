@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.~
+~*
+.env
+.venv
+venv/
+
+# IDEs
+.idea/
+.vscode/
+
+# Application specific
+endpoints.json
+
+# Nuitka build artifacts
+/build/
+*.build/
+*.onefile-build/
+nuitka-crash-report.xml

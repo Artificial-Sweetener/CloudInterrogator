@@ -1,0 +1,5 @@
+PySide6
+PySide6-Fluent-Widgets
+PySideSix-Frameless-Window
+pillow
+openai
