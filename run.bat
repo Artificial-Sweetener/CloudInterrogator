@@ -3,7 +3,7 @@
 cd /d %~dp0
 
 :: Check if the virtual environment directory exists
-if not exist .\venv (
+if not exist .\.venv (
     echo ---
     echo Hiii!~ It looks like this is your first time running the app.
     echo I'll set up a virtual environment for you. This might take a moment...
@@ -33,4 +33,4 @@ if not exist .\venv (
 )
 
 :: Run the main application using the venv python
-.\venv\Scripts\python.exe main.py
+.\.venv\Scripts\python.exe main.py
