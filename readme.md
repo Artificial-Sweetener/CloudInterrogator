@@ -31,23 +31,46 @@ If messing around with Python isn't your jam, I've got you covered. You can grab
 
 ### With Python
 
-Getting set up is super easy! Just install the packages from `requirements.txt`.
+There are two ways to run the app with Python.
 
-```bash
-pip install -r requirements.txt
-```
+#### The Easy Way (Windows)
 
-If you want the app to match your system's accent color on Windows, you'll need one little extra package:
+Just double-click `run.bat`.
 
-```bash
-pip install winaccent
-```
+The first time you run it, a script will automatically create a virtual environment (`.venv`), install all the required packages, and add `winaccent` for native theme support. Every time you run it after that, it will just launch the app. Super simple!
 
-Once that's done, you can start the app with:
+For more control, you can use `venv.bat` to open a command prompt with the environment already activated.
 
-```bash
-python main.py
-```
+#### Manual Setup (All Platforms)
+
+If you prefer to manage the environment yourself, you can follow these steps. This method SHOULD works on Windows, macOS, and Linux, but please know that I haven't had a chance to test it on a Linux or macOS machine myself!
+
+1.  **Create and activate a virtual environment**:
+    ```bash
+    # On Windows
+    python -m venv .venv
+    .\venv\Scripts\activate
+
+    # On macOS & Linux
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+2.  **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  **(Optional) For native theme on Windows**:
+    ```bash
+    pip install winaccent
+    ```
+4.  **Run the app**:
+    ```bash
+    # On Windows
+    python main.py
+
+    # On macOS & Linux
+    python3 main.py
+    ```
 
 ## Building from Source
 

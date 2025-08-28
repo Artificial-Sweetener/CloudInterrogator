@@ -1,78 +1,76 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import os
-import sys
-import json
 import base64
+import json
+import os
 import random
-from io import BytesIO
+import sys
 from dataclasses import dataclass
+from io import BytesIO
 from typing import List, Optional, Tuple
 
 from PIL import Image
-
-from PySide6.QtCore import (
-    Qt,
-    QSize,
-    QThread,
-    Signal,
-    QSettings,
-    QPoint,
-    QSize as QSizeObj,
-    QTimer,
-)
-from PySide6.QtGui import QPixmap, QImage, QColor, QGuiApplication, QTextCursor
+from PySide6.QtCore import QPoint, QSettings
+from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize as QSizeObj
+from PySide6.QtCore import Qt, QThread, QTimer, Signal
+from PySide6.QtGui import QColor, QGuiApplication, QIcon, QImage, QPixmap, QTextCursor
 from PySide6.QtWidgets import (
     QApplication,
-    QWidget,
-    QFileDialog,
-    QLabel,
-    QVBoxLayout,
-    QHBoxLayout,
-    QPlainTextEdit,
+    QCheckBox,
     QDialog,
+    QDoubleSpinBox,
+    QFileDialog,
+    QFormLayout,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
     QListWidget,
     QListWidgetItem,
-    QLineEdit,
-    QFormLayout,
+    QPlainTextEdit,
     QSpinBox,
-    QDoubleSpinBox,
-    QCheckBox,
-    QFrame,
     QSplitter,
     QStackedLayout,
+    QVBoxLayout,
+    QWidget,
 )
-
 from qfluentwidgets import (
-    FluentIcon,
-    PrimaryPushButton,
-    PushButton,
     ComboBox,
+    Dialog,
+    FluentIcon,
+    InfoBar,
+    InfoBarPosition,
     LineEdit,
     Pivot,
     PivotItem,
-    InfoBar,
-    InfoBarPosition,
+    PrimaryPushButton,
+    PushButton,
     Theme,
     setTheme,
     setThemeColor,
     themeColor,
-    Dialog,
 )
-
 from qframelesswindow import AcrylicWindow
 from qframelesswindow.titlebar import TitleBar
 
+import resources_rc
+
 APP_ORG = "CloudInterrogator"
 APP_NAME = "CloudInterrogator"
-if getattr(sys, 'frozen', False):
-    # Running as a compiled executable
-    app_dir = os.path.dirname(sys.executable)
+
+if (
+    getattr(sys, "frozen", False)
+    or os.path.splitext(sys.argv[0])[1].lower() == ".exe"
+    or os.environ.get("NUITKA_ONEFILE_PARENT")
+):
+    app_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 else:
-    # Running as a normal script
     app_dir = os.path.dirname(os.path.abspath(__file__))
+
 ENDPOINTS_FILE = os.path.join(app_dir, "endpoints.json")
+
 UI_GAP = 12  # single knob for section spacing
 
 
@@ -994,7 +992,12 @@ def main():
     setThemeColor(get_accent_color())
     win = FluentWindow()
     win.setWindowTitle("Cloud Interrogator")
-    win.setWindowIcon(FluentIcon.CLOUD.icon())
+    exe_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+    icon_path = os.path.join(exe_dir, "icon.ico")
+
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(":/icon.ico"))
+        win.setWindowIcon(QIcon(":/icon.ico"))
     s = QSettings(APP_ORG, APP_NAME)
     size = s.value("window/size")
     pos = s.value("window/pos")
