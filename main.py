@@ -222,13 +222,15 @@ class ChatStreamer(QThread):
 
 
 def to_pixmap(pil: Image.Image, target: QSize) -> QPixmap:
-    if pil.mode != "RGB":
-        pil = pil.convert("RGB")
+    # Use a 32bpp format to ensure 4-byte row alignment on Windows
+    if pil.mode != "RGBA":
+        pil = pil.convert("RGBA")
     w, h = pil.size
-    qimg = QImage(pil.tobytes(), w, h, QImage.Format_RGB888)
-    return QPixmap.fromImage(qimg).scaled(
-        target, Qt.KeepAspectRatio, Qt.SmoothTransformation
-    )
+    buf = pil.tobytes()
+    # Force deep copy via .copy() to detach from Python buffer
+    qimg = QImage(buf, w, h, w * 4, QImage.Format_RGBA8888).copy()
+    pm = QPixmap.fromImage(qimg)
+    return pm.scaled(target, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
 
 def encode_image(pil: Image.Image, short_side: int = 512, quality: int = 85) -> str:
